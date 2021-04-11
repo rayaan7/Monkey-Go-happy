@@ -18,7 +18,7 @@ function setup() {
   monkey.scale = 0.05;
   bananaGroup = createGroup();
   obstacleGroup = createGroup();
-  ground = createSprite(0, 300, 800, 200);
+  ground = createSprite(0, 300, 1500, 20);
   ground.shapeColor = "brown";
   score = 0;
 
@@ -42,11 +42,11 @@ function draw() {
   spawnobstacle();
 
 
-  score = Math.round(score + (Math.round(getFrameRate() / 60) / 2))
+  //score = Math.round(score + (Math.round(getFrameRate() / 60) / 2))
   textSize = 20;
   stroke("white");
   fill("white");
-  text("Survival Time: " + score, 150, 50);
+  text("Score: " + score, 150, 50);
 
   touch();
 
@@ -55,8 +55,8 @@ function draw() {
 
 function food() {
   var decideYvalue = Math.round(random(120, 200));
-  if (frameCount % 80 === 0) {
-    banana = createSprite(400, 0, 20, 20)
+  if (frameCount % 100 === 0) {
+    banana = createSprite(600, 0, 20, 20)
     banana.addImage(bananaImage);
     banana.y = decideYvalue;
     banana.lifetime = 135;
@@ -69,7 +69,7 @@ function food() {
 
 function spawnobstacle() {
   if (frameCount % 300 === 0) {
-    obstacle = createSprite(400, 200, 0, 0);
+    obstacle = createSprite(600, 270, 0, 0);
     obstacle.addImage("obs", obstacleImage);
     obstacle.lifetime = 135;
     obstacleGroup.add(obstacle);
